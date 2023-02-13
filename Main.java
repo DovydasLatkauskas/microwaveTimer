@@ -22,8 +22,15 @@ public class Main {
     private static ArrayList<ArrayList<Integer>> microwaveTimer(ArrayList<Integer> timerInput) {
         ArrayList<ArrayList<Integer>> timerOutput = new ArrayList<ArrayList<Integer>>();
         timerOutput.add(timerInput); // adds the input parameters to the beginning of the output
-        while (!((timerInput.get(0) == 0)&&(timerInput.get(1) == 0))) {
-            timerOutput.add(countDown(timerInput));
+        // condition when the while loop should break
+        ArrayList<Integer> toBreak = new ArrayList<Integer>();
+        toBreak.add(0);
+        toBreak.add(0);
+        while (true) {
+            timerOutput.add(countDown(timerOutput.get(timerOutput.size() - 1)));
+            if (timerOutput.get(timerOutput.size() - 1).equals(toBreak)){
+                break;
+            }
         }
         // adds [0,0] to the end of output
         ArrayList<Integer> endList = new ArrayList<Integer>();
