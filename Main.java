@@ -14,16 +14,16 @@ public class Main {
      * Main function of the program
      * represents the working of the microwave timer
      * 
-     * @param input the starting state of the microwave timer
+     * @param timerInput the starting state of the microwave timer
      * @return an ArrayList of integers integers representing the state of
      * the microwave timer ordered chronologically
      */
 
-    private static ArrayList<ArrayList<Integer>> microwaveTimer(ArrayList<Integer> input) {
+    private static ArrayList<ArrayList<Integer>> microwaveTimer(ArrayList<Integer> timerInput) {
         ArrayList<ArrayList<Integer>> timerOutput = new ArrayList<ArrayList<Integer>>();
-        timerOutput.add(input); // adds the input parameters to the beginning of the output
-        while (!((input.get(0) == 0)&&(input.get(1) == 0))) {
-            timerOutput.add(countDown(input));
+        timerOutput.add(timerInput); // adds the input parameters to the beginning of the output
+        while (!((timerInput.get(0) == 0)&&(timerInput.get(1) == 0))) {
+            timerOutput.add(countDown(timerInput));
         }
         // adds [0,0] to the end of output
         ArrayList<Integer> endList = new ArrayList<Integer>();
@@ -35,19 +35,19 @@ public class Main {
 
     /**
      * helper function for microwaveTimer()
-     * @param input the current state of the timer
+     * @param countDownInput the current state of the timer
      * @return the state of the timer after a second
      */
 
-    private static ArrayList<Integer> countDown(ArrayList<Integer> input) {
+    private static ArrayList<Integer> countDown(ArrayList<Integer> countDownInput) {
         ArrayList<Integer> countDownOutput = new ArrayList<Integer>();
-        if (input.get(1) > 0) {
-            countDownOutput.add(input.get(0));
-            countDownOutput.add(input.get(1) - 1);
+        if (countDownInput.get(1) > 0) {
+            countDownOutput.add(countDownInput.get(0));
+            countDownOutput.add(countDownInput.get(1) - 1);
             return countDownOutput;
         }
-        else if((input.get(1) == 0) && (input.get(0) > 0)){
-            countDownOutput.add(input.get(0) - 1);
+        else if((countDownInput.get(1) == 0) && (countDownInput.get(0) > 0)){
+            countDownOutput.add(countDownInput.get(0) - 1);
             countDownOutput.add(59);
             return countDownOutput;
         }
