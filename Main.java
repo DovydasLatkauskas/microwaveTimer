@@ -4,7 +4,10 @@ public class Main {
         ArrayList<Integer> testInput = new ArrayList<Integer>(); //input created for testing
         testInput.add(1);
         testInput.add(80);
-        System.out.println(microwaveTimer(testInput)); // print statement for testing
+        ArrayList<ArrayList<Integer>> printOutput = microwaveTimer(testInput); // print statement for testing
+        for (ArrayList<Integer> listElement : printOutput) {
+            System.out.println(listElement);
+        }
     }
 
     /**
@@ -17,17 +20,17 @@ public class Main {
      */
 
     private static ArrayList<ArrayList<Integer>> microwaveTimer(ArrayList<Integer> input) {
-        ArrayList<ArrayList<Integer>> output = new ArrayList<ArrayList<Integer>>();
-        output.add(input); // adds the input parameters to the beginning of the output
+        ArrayList<ArrayList<Integer>> timerOutput = new ArrayList<ArrayList<Integer>>();
+        timerOutput.add(input); // adds the input parameters to the beginning of the output
         while (!((input.get(0) == 0)&&(input.get(1) == 0))) {
-            output.add(countDown(input));
+            timerOutput.add(countDown(input));
         }
         // adds [0,0] to the end of output
         ArrayList<Integer> endList = new ArrayList<Integer>();
         endList.add(0);
         endList.add(0);
-        output.add(endList);
-        return output;
+        timerOutput.add(endList);
+        return timerOutput;
     }
 
     /**
@@ -37,16 +40,16 @@ public class Main {
      */
 
     private static ArrayList<Integer> countDown(ArrayList<Integer> input) {
-        ArrayList<Integer> output = new ArrayList<Integer>();
+        ArrayList<Integer> countDownOutput = new ArrayList<Integer>();
         if (input.get(1) > 0) {
-            output.add(input.get(0));
-            output.add(input.get(1) - 1);
-            return output;
+            countDownOutput.add(input.get(0));
+            countDownOutput.add(input.get(1) - 1);
+            return countDownOutput;
         }
         else if((input.get(1) == 0) && (input.get(0) > 0)){
-            output.add(input.get(0) - 1);
-            output.add(59);
-            return output;
+            countDownOutput.add(input.get(0) - 1);
+            countDownOutput.add(59);
+            return countDownOutput;
         }
         else{ // should never fire
             throw new IllegalStateException("countDown method logic error");
